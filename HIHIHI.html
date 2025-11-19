@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi người ấy ❤️</title>
+    <!-- Nhúng Tailwind CSS trực tiếp -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Nhúng Font Awesome cho icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Hiệu ứng chuyển động */
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 3s linear infinite;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .animate-shake {
+            animation: shake 0.5s ease-in-out infinite;
+        }
+        @keyframes pulse-heart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .animate-pulse-heart {
+            animation: pulse-heart 1.5s infinite;
+        }
+        .hidden {
+            display: none !important;
+        }
+        /* Gradient chữ */
+        .text-gradient {
+            background: linear-gradient(to right, #ec4899, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="overflow-hidden font-sans">
+
+    <!-- MÀN HÌNH 1: NHẬP TÊN -->
+    <div id="step1" class="flex flex-col items-center justify-center min-h-screen bg-pink-50 p-4 transition-opacity duration-500">
+        <div class="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full text-center border-4 border-pink-200">
+            <h1 class="text-3xl font-bold text-pink-600 mb-6">Chào đằng ấy!</h1>
+            <p class="text-gray-600 mb-4">Nhập tên của bạn vào đây nhé:</p>
+            <form id="nameForm" class="flex flex-col gap-4">
+                <input type="text" id="partnerNameInput" placeholder="Tên của bạn là..." class="p-3 border-2 border-pink-300 rounded-xl focus:outline-none focus:border-pink-500 text-center text-lg" required>
+                <button type="submit" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-xl transition-colors duration-300">Tiếp tục ❤️</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MÀN HÌNH 2: CÂU HỎI THÍCH HƯNG -->
+    <div id="step2" class="hidden flex-col items-center justify-center min-h-screen bg-gradient-to-b from-pink-100 to-red-50 p-4 relative w-full h-full">
+        <div class="z-10 text-center mb-12 mt-10">
+            <h2 class="text-2xl md:text-4xl font-bold text-gray-800 leading-relaxed">
+                Hưng rất thích <span id="displayNameStep2" class="text-pink-600">...</span>,<br>
+                bạn có thích Hưng không?
+            </h2>
+        </div>
+
+        <div class="flex flex-wrap justify-center items-center gap-8 w-full h-60 relative">
+            <!-- Nút CÓ -->
+            <button id="btnYesStep2" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg z-20 whitespace-nowrap transition-transform duration-200">
+                CÓ 😍
+            </button>
+
+            <!-- Nút KHÔNG -->
+            <button id="btnNoStep2" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-8 rounded-full shadow-lg z-10 whitespace-nowrap transition-all duration-300">
+                KHÔNG 🥺
+            </button>
+        </div>
+    </div>
+
+    <!-- MÀN HÌNH 3: TỎ TÌNH -->
+    <div id="step3" class="hidden flex-col items-center justify-center min-h-screen bg-gradient-to-r from-rose-100 via-pink-100 to-rose-100 p-4">
+        <!-- Tên và Trái Tim -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 mb-12 w-full max-w-4xl">
+            <div class="text-3xl md:text-5xl font-bold text-blue-600 animate-bounce">Hưng</div>
+            
+            <div class="relative group">
+                <div class="absolute inset-0 bg-pink-400 blur-xl opacity-50 animate-pulse rounded-full"></div>
+                <i class="fas fa-heart text-9xl text-pink-500 drop-shadow-2xl animate-pulse-heart transform group-hover:scale-110 transition-transform duration-500 relative z-10"></i>
+                <i class="fas fa-sparkles absolute -top-4 -right-4 text-yellow-400 animate-spin-slow text-3xl z-20"></i>
+                <i class="fas fa-sparkles absolute bottom-0 -left-4 text-yellow-400 animate-pulse text-2xl z-20"></i>
+            </div>
+
+            <div id="displayNameStep3" class="text-3xl md:text-5xl font-bold text-pink-600 animate-bounce" style="animation-delay: 0.1s;">...</div>
+        </div>
+
+        <!-- Hộp câu hỏi cuối -->
+        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-2xl text-center max-w-lg w-full border border-pink-200">
+            <h3 class="text-2xl font-bold text-gray-800 mb-8">Làm người yêu tớ nhé? 🌹</h3>
+
+            <div id="actionButtonsStep3" class="flex justify-center gap-6">
+                <button id="btnAgree" class="bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:scale-105 transition-transform">ĐỒNG Ý 💘</button>
+                <button id="btnRefuse" class="bg-gray-200 text-gray-700 font-bold py-3 px-6 rounded-xl hover:bg-gray-300 transition-colors">KHÔNG ĐỒNG Ý</button>
+            </div>
+
+            <!-- Kết quả: Đồng ý -->
+            <div id="resultAgree" class="hidden mt-4 animate-fade-in-up">
+                <p class="text-xl md:text-2xl font-bold text-pink-600 leading-relaxed">
+                    ♪♪♪ và thế giới đã mất đi một người cô đơn ❤️
+                </p>
+                <div class="mt-4 flex justify-center gap-2 text-red-500 text-2xl">
+                    <i class="fas fa-heart animate-bounce"></i>
+                    <i class="fas fa-heart animate-bounce" style="animation-delay: 0.1s"></i>
+                    <i class="fas fa-heart animate-bounce" style="animation-delay: 0.2s"></i>
+                </div>
+            </div>
+
+            <!-- Kết quả: Từ chối -->
+            <div id="resultRefuse" class="hidden mt-4">
+                <div class="text-6xl animate-shake">😭</div>
+                <p class="text-gray-500 mt-2">Huhu buồn quá đi...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Biến lưu tên
+        let partnerName = "";
+        let yesScale = 1;
+
+        // DOM Elements
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        
+        const nameForm = document.getElementById('nameForm');
+        const partnerNameInput = document.getElementById('partnerNameInput');
+        
+        const btnYesStep2 = document.getElementById('btnYesStep2');
+        const btnNoStep2 = document.getElementById('btnNoStep2');
+        
+        const displayNameStep2 = document.getElementById('displayNameStep2');
+        const displayNameStep3 = document.getElementById('displayNameStep3');
+        
+        const btnAgree = document.getElementById('btnAgree');
+        const btnRefuse = document.getElementById('btnRefuse');
+        const resultAgree = document.getElementById('resultAgree');
+        const resultRefuse = document.getElementById('resultRefuse');
+        const actionButtonsStep3 = document.getElementById('actionButtonsStep3');
+
+        // Xử lý nhập tên (Bước 1 -> 2)
+        nameForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = partnerNameInput.value.trim();
+            if (name) {
+                partnerName = name;
+                displayNameStep2.textContent = partnerName;
+                displayNameStep3.textContent = partnerName;
+                
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+                step2.classList.add('flex');
+            }
+        });
+
+        // Xử lý nút KHÔNG chạy trốn (Bước 2)
+        function moveNoButton() {
+            // Tăng kích thước nút CÓ
+            yesScale += 0.5;
+            btnYesStep2.style.transform = `scale(${yesScale})`;
+
+            // Di chuyển nút KHÔNG
+            const randomTop = Math.floor(Math.random() * 80) + 10; // 10% - 90%
+            const randomLeft = Math.floor(Math.random() * 80) + 10;
+            
+            btnNoStep2.style.position = 'absolute';
+            btnNoStep2.style.top = `${randomTop}%`;
+            btnNoStep2.style.left = `${randomLeft}%`;
+        }
+
+        // Sự kiện cho nút KHÔNG: Cả click và hover (để khó bấm hơn trên PC)
+        btnNoStep2.addEventListener('click', moveNoButton);
+        btnNoStep2.addEventListener('mouseover', () => {
+            // Chỉ di chuyển khi dùng chuột trên PC, trên mobile thì dùng touch/click
+            if(window.innerWidth > 768) {
+                moveNoButton();
+            }
+        });
+
+        // Xử lý nút CÓ (Bước 2 -> 3)
+        btnYesStep2.addEventListener('click', () => {
+            step2.classList.add('hidden');
+            step2.classList.remove('flex');
+            step3.classList.remove('hidden');
+            step3.classList.add('flex');
+        });
+
+        // Xử lý Đồng ý (Bước 3)
+        btnAgree.addEventListener('click', () => {
+            actionButtonsStep3.classList.add('hidden');
+            resultAgree.classList.remove('hidden');
+        });
+
+        // Xử lý Không Đồng ý (Bước 3)
+        btnRefuse.addEventListener('click', () => {
+            actionButtonsStep3.classList.add('hidden');
+            resultRefuse.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
